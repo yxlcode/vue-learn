@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="lib/vue.js"></script>
+		<style>
+			.out {
+				height: 200px;
+				background-color: darkcyan;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="app">
+			<!--
+                	作者：gyh-code@foxmail.com
+                	时间：2019-01-27
+                	描述：当点击内层事件会冒泡外层效应,使用stop
+                -->
+			<div class="out" @click="out">
+				<input type="button" class="inner" value="点击" @click.stop="inner" />
+			</div>
+
+			<!--
+            	作者：gyh-code@foxmail.com
+            	时间：2019-01-27
+            	描述：阻止默认行为，例如点击事件进入百度，阻止@click.prevent
+            -->
+			<a href="http://www.baidu.com" @click.prevent="linkbaidu">阻止去百度</a>
+			<!--
+            	作者：gyh-code@foxmail.com
+            	时间：2019-01-27
+            	描述：捕获事件，先输出其他事件
+            -->
+			<div class="out" @click.capture="out">
+				<input type="button" class="inner" value="点击" @click="inner" />
+			</div>
+			<br>
+			<!--
+            	作者：gyh-code@foxmail.com
+            	时间：2019-01-27
+            	描述：self 自身点击事件才触发
+            -->
+			<div class="out" @click.self="out">
+				<input type="button" class="inner" value="点击" @click="inner" />
+			</div>
+			<!--
+            	作者：gyh-code@foxmail.com
+            	时间：2019-01-27
+            	描述：只触发一次事件once
+            -->
+			<a @click.once="one">只触发一次事件</a>
+		</div>
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {},
+				methods: {
+					out() {
+						alert("外层div事件")
+					},
+					inner() {
+						alert("内层按钮事件")
+					},
+					linkbaidu() {
+						alert("去百度")
+					},
+					one() {
+						alert("只触发一次")
+					}
+				}
+			})
+		</script>
+	</body>
+
+</html>

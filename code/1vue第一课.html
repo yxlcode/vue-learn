@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="lib/vue.js"></script>
+		<style type="text/css">
+			[v-cloak] {
+				display: none;
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+		<div id="app">
+			<span v-cloak>{{msg}}</span><br />
+			<span v-text="msg1"></span><br />
+			<span v-html="msg2"></span>
+			<!--
+            	作者：gyh-code@foxmail.com
+            	时间：2019-01-28
+            	描述：使用：代替v-bind
+            -->
+			<input type="button" value="按钮" :title="mytitle" @click="show】" />
+		</div>
+		<script>
+			//vue实例
+			var vm = new Vue({
+				el: '#app', //控制的区域
+				data: { //存放的数据
+					msg: '学习vue',
+					msg1: '使用了v-text',
+					msg2: '<h1>使用v-html</h1>',
+					mytitle: '这是按钮'
+				},
+				methods: {
+					show: function() {
+						alert("hello")
+					}
+				}
+
+			})
+		</script>
+	</body>
+
+</html>

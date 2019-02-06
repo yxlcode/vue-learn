@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="lib/vue.js"></script>
+		<style type="text/css">
+
+		</style>
+
+	</head>
+
+	<body>
+
+		<div id="app">
+			<input type="button" value="toggle" @click="flag=!flag" />
+			<!--
+            	作者：gyh-code@foxmail.com
+            	时间：2019-01-30
+            	描述：v-if重新删除 在创建操作 有较高的切换性能消耗
+            	平凡切换尽量不使用
+            -->
+			<h1 v-if="flag">v-if控制</h1>
+			<!--
+            	作者：gyh-code@foxmail.com
+            	时间：2019-01-30
+            	描述：v-show是display:none  有较高的初始渲染消耗
+            -->
+			<h1 v-show="flag">v-show控制</h1>
+		</div>
+		<script>
+			//vue实例
+			var vm = new Vue({
+				el: '#app', //控制的区域
+				data: { //存放的数据
+					flag: true
+				},
+				methods: {}
+
+			})
+		</script>
+	</body>
+
+</html>

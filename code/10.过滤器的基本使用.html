@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="lib/vue.js"></script>
+		<style type="text/css">
+		</style>
+
+	</head>
+
+	<body>
+
+		<div id="app">
+			<p>{{msg|msgfilter1('周润发')|msgfilter2}}</p>
+		</div>
+		<script>
+			Vue.filter('msgfilter1',function(msg,arg) {
+				return msg.replace(/叶湘伦/g,arg)
+			})
+			Vue.filter('msgfilter2',function(msg) {
+				return msg+'+++++'
+			})
+
+			//vue实例
+			var vm = new Vue({
+			el: '#app', //控制的区域
+				data: { //存放的数据
+					msg: '你好,我是叶湘伦,叶湘伦'
+				},
+				methods: {
+					
+				}
+
+			})
+
+		</script>
+	</body>
+
+</html>

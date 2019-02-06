@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="lib/vue.js"></script>
+		<link rel="stylesheet" type="text/css" href="lib/bootstrap.css">
+		<style type="text/css">
+
+		</style>
+
+
+
+	</head>
+
+	<body>
+		<div id="app">
+
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">添加品牌</h3>
+				</div>
+				<div class="panel-body form-inline">
+					<label>
+						id:<input type="text" class="form-control" v-model="id"  name="">
+					</label>
+					<label>
+						name:<input type="text" class="form-control" v-model="name" name="">
+					</label>
+					<input type="button" name="" class="btn btn-primary" @click="add"  value="添加">
+
+					<label>
+						关键字:<input type="text" class="form-control" v-model="keywords" name="">
+					</label>
+				</div>
+			</div>
+
+
+
+
+			<table class="table table-dark table-bordered table-hover table-striped">
+				<thead>
+					<tr>
+						<th>id</th>
+						<th>name</th>
+						<th>Ctime</th>
+						<th>Operator</th>
+					</tr>
+				</thead>
+			 <tbody>
+			 	<tr  v-for="item in ser(keywords)" :key="item.id">
+			 		<td>{{item.id}}</td>
+			 		<td>{{item.name}}</td>
+			 		<td>{{item.Ctime}}</td>
+			 		<td><a href="" @click.prevent="del(item.id)">删除</a></td>
+			 	</tr>
+			 	
+			 </tbody>
+			</table>
+		</div>
+		<script>
+			//vue实例
+			var vm = new Vue({
+				el: '#app', //控制的区域
+				data: { //存放的数据
+					id:'',
+					name:'',
+					keywords:'',
+					list:[
+					{id:1,name:'奔驰',Ctime:new Date()},
+					{id:2,name:'宝马',Ctime:new Date()},
+					{id:3,name:'大众',Ctime:new Date()},
+					]
+				},
+				methods: {
+					add(){
+						var car={id:this.id,name:this.name,Ctime:new Date()}
+						this.list.push(car)
+					},
+					del(id){
+						/*this.list.some((item,i)=>{
+							if (item.id==id) {
+								this.list.splice(i, 1)
+								return true
+							} 
+						})*/
+
+						// findIndex:返回下标
+						var index=this.list.findIndex(item=>{
+							if (item.id==id) {
+							if (item.id==id) {
+								return true
+							} 
+						})
+						this.list.splice(index, 1)						
+					},
+					ser(keywords){
+						/*var newList = []
+						this.list.forEach(item => {
+							if (item.name.indexOf(keywords) != -1) {	
+								newList.push(item)
+							} 
+						})
+						return newList*/
+
+						// 第二种
+						var newList=this.list.filter(item=>{
+							// if (item.name.indexOf(keywords)!=-1)
+							// includes包含返回true 
+							if (item.name.includes(keywords)) {
+								return item
+							}
+						})
+
+						return newList
+					}
+
+				}
+			})
+
+		</script>
+	</body>
+
+</html>
+
+

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="lib/vue.js"></script>
+		<style type="text/css">
+			.red {
+				color: red;
+			}
+			
+			.thin {
+				font-weight: 200;
+			}
+			
+			.italic {
+				font-style: italic;
+			}
+			
+			.active {
+				letter-spacing: 0.5em;
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+		<div id="app">
+			<!--
+            	作者：gyh-code@foxmail.com
+            	时间：2019-01-28
+            	描述：使用数组绑定class类样式
+            -->
+			<!--<h1 :class="['red','thin','italic']">大大的h1</h1>-->
+
+			<!--
+            	作者：gyh-code@foxmail.com
+            	时间：2019-01-28
+            	描述：在数组中使用三元表达式
+            -->
+			<!--<h1 :class="['red','thin',flag?'active':'']">大大的h1</h1>-->
+
+			<!--
+            	作者：gyh-code@foxmail.com
+            	时间：2019-01-28
+            	描述：使用对象来代替三元表达式
+            -->
+			<!--<h1 :class="['red','thin',{'active':flag} ]">大大的h1</h1>-->
+
+			<!--
+            	作者：gyh-code@foxmail.com
+            	时间：2019-01-28
+            	描述：使用v-bind 对象的属性可带引号可不带引号
+            -->
+			<h1 :class="classobj">大大的h1</h1>
+
+			<!--
+            	作者：gyh-code@foxmail.com
+            	时间：2019-01-28
+            	描述：
+            -->
+			<h1 :style="{color:'red','font-weight':200}">使用内联样式</h1>
+			
+			<!--
+            	作者：gyh-code@foxmail.com
+            	时间：2019-01-28
+            	描述：
+            -->
+			<h1 :style="classobj2">使用内联样式</h1>
+		</div>
+		<script>
+			//vue实例
+			var vm = new Vue({
+				el: '#app', //控制的区域
+				data: { //存放的数据
+					flag: false,
+					classobj: {
+						red: true,
+						active: true
+					},
+					classobj2: {
+						color: 'red',
+						'font-weight': 200
+					}
+				},
+				methods: {}
+
+			})
+		</script>
+	</body>
+
+</html>

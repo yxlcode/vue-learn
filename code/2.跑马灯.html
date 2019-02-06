@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="lib/vue.js"></script>
+		<style>
+			#app {
+				width: 100%;
+			}
+			
+			.center {
+				width: 300px;
+				margin: 0 auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="app">
+			<div class="center">
+				<input type="button" value="滚动" @click="scoll" />
+				<input type="button" value="停止" @click="stop" />
+				<h1>{{msg}}</h1></div>
+		</div>
+
+		<script>
+			var vm = new Vue({
+				el: "#app",
+				data: {
+					msg: '加油我是最棒的！',
+					intetvalId: null
+				},
+				methods: {
+					scoll() {
+						if(this.intetvalId != null) return;
+						this.intetvalId = setInterval(() => {
+							var start = this.msg.substring(0, 1)
+							var end = this.msg.substring(1)
+							this.msg = end + start
+						}, 400)
+					},
+					stop() {
+						clearInterval(this.intetvalId)
+						this.intetvalId = null
+					}
+				}
+			})
+		</script>
+	</body>
+
+</html>

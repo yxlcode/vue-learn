@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="lib/vue.js"></script>
+		<style type="text/css">
+
+		</style>
+
+	</head>
+
+	<body>
+
+		<div id="app">
+			<!--
+            	作者：gyh-code@foxmail.com
+            	时间：2019-01-28
+            	描述：循环普通数组
+            -->
+			<!--<ul>
+				<li v-for="(item,i) in list1">索引值：{{i}},值:{{item}}</li>
+			</ul>-->
+
+			<!--
+            	作者：gyh-code@foxmail.com
+            	时间：2019-01-28
+            	描述：循环对象数组
+            -->
+			<ul>
+				<li v-for="(user,i) in list2">索引值：{{i}},id：{{user.id}},name:{{user.name}}</li>
+			</ul>
+
+			<!--
+            	作者：gyh-code@foxmail.com
+            	时间：2019-01-28
+            	描述：循环对象
+            -->
+			<ul>
+				<li v-for="(val,key) in list3">值：{{val}},键：{{key}}</li>
+			</ul>
+
+			<!--
+            	作者：gyh-code@foxmail.com
+            	时间：2019-01-28
+            	描述：迭代数字
+            -->
+			<ul>
+				<li v-for="(count,i) in 10">{{count}} {{i}}</li>
+			</ul>
+
+			<!--
+            	作者：gyh-code@foxmail.com
+            	时间：2019-01-28
+            	描述：使用key唯一标识
+            -->
+			<div>
+				<label>
+            		id:<input type="text"  v-model="id" />
+            	</label>
+				<label>
+            		name:<input type="text" v-model="name"  />
+            	</label>
+				<input type="button" value="添加" @click="add" />
+			</div>
+			<ul>
+				<li v-for="item in list4" :key="item.id">
+					<input type="checkbox" />{{item.id}}-------{{item.name}}
+				</li>
+			</ul>
+		</div>
+		<script>
+			//vue实例
+			var vm = new Vue({
+				el: '#app', //控制的区域
+				data: { //存放的数据
+					id: '',
+					name: '',
+					list1: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+					list2: [{
+							id: 1,
+							name: 'one'
+						},
+						{
+							id: 2,
+							name: 'two'
+						}, {
+							id: 3,
+							name: 'three'
+						}, {
+							id: 4,
+							name: 'four'
+						}, {
+							id: 5,
+							name: 'five'
+						},
+					],
+					list3: {
+						id: 1,
+						name: 'one',
+						age: 11
+					},
+					list4: [{
+							id: 1,
+							name: 'one'
+						},
+						{
+							id: 2,
+							name: 'two'
+						}, {
+							id: 3,
+							name: 'three'
+						}, {
+							id: 4,
+							name: 'four'
+						}, {
+							id: 5,
+							name: 'five'
+						},
+					]
+				},
+				methods: {
+					add() {
+						this.list4.unshift({
+							id: this.id,
+							name: this.name
+						})
+					}
+				}
+
+			})
+		</script>
+	</body>
+
+</html>

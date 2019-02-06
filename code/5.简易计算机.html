@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="lib/vue.js"></script>
+		<style type="text/css">
+
+		</style>
+
+	</head>
+
+	<body>
+
+		<div id="app">
+			<input type="text" v-model="n1" />
+			<select v-model="opt">
+				<option>+</option>
+				<option>-</option>
+				<option>*</option>
+				<option>/</option>
+			</select>
+			<input type="text" name="" id="" value="" v-model="n2" />
+			<input type="button" name="" id="" value="=" @click="cal" />
+			<input type="text" name="" id="" value="" v-model="result" />
+		</div>
+		<script>
+			//vue实例
+			var vm = new Vue({
+				el: '#app', //控制的区域
+				data: { //存放的数据
+					n1: 0,
+					n2: 0,
+					result: 0,
+					opt: '+'
+				},
+				methods: {
+					cal() {
+						this.result = eval(this.n1 + this.opt + this.n2)
+					}
+				}
+
+			})
+		</script>
+	</body>
+
+</html>
